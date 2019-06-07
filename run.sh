@@ -1,0 +1,1 @@
+java  -cp $PWD/classes Main
