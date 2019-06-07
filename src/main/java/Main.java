@@ -36,33 +36,24 @@ public class Main {
             for (int j = 1; j <= REPEATS; j++) {
 
                 Integer[] a = createRandomArray(SIZE_FIXED);
-                //   Integer[] b = Arrays.copyOf(a, SIZE_FIXED);
                 Integer[] b;
 
                 Times times = new Times();
                 long startTime = System.currentTimeMillis();
+                //b = (new Sorter()).sort(a, i, times);
                 b = (new Sorter()).sortOMP(a, i, times);
                 long endTime = System.currentTimeMillis();
 
-     /*           if (!isSorted(b, a.length)) {
+                if (!isSorted(b, a.length)) {
                     System.out.println("Default not sorted afterward!");
                     throw new RuntimeException("Sort error");
-                }*/
+                }
                 if (i == 1)
                     res[j - 1] = endTime - startTime;
                 else {
                     res[j - 1] = times.getTt();
                     resm[j - 1] = times.getTm();
                 }
-
-             /*   startTime = System.currentTimeMillis();
-                MergeSorter.sortOMP(b, comp, i);
-                endTime = System.currentTimeMillis();*/
-
-        /*        if (!isSorted(b, comp)) {
-                    throw new RuntimeException("Omp not sorted afterward!");
-                }*/
-                //     resOMP[j - 1] = endTime - startTime;
             }
             if (i == 1) {
                 System.out.println("    Default:");
@@ -73,8 +64,6 @@ public class Main {
                 System.out.println("    Merge:");
                 calculateResults(resm);
             }
-       /*     System.out.println("    OMP:");
-            calculateResults(resOMP);*/
         }
     }
 
